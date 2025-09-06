@@ -7,4 +7,4 @@ It simulates a Pet Adoption System, where pets can be added, viewed, updated, an
 
 > Note: This may take 1-2 minutes to load on first visit since we are using free plan of onrender to host backend it goes to sleep after 15 mins of inactivity
 
-visit thie [Live Demo] (https://happy-paws-na7b.onrender.com) to see it in action!
+visit thi [Live Demo](https://happy-paws-na7b.onrender.com) to see it in action!
