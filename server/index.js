@@ -9,9 +9,13 @@ app.use(express.json());
 app.use(cors());
 
 const connectDB = async () => {
-    const conn = mongoose.connect(process.env.MONGODB_URL)
-    if(conn){
-        console.log("MongoDB connected successfully ✅");
+    try{
+        const conn = await mongoose.connect(process.env.MONGODB_URL)
+        if(conn){
+            console.log("MongoDB connected successfully ✅");
+        }
+    }catch(e){
+        console.error(`❌mongoDB connection failed: ${e.message}`);
     }
 }
 
