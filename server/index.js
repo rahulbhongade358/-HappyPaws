@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import Pet from './models/Pet.js';
+import { getPets,postPet,getPetsbyID,getPetsbysearch,putPetbyID,patchPetbyID,delPetbyID } from './controllers/pet.js';
 dotenv.config();
  
 const app = express();
@@ -22,6 +24,14 @@ const connectDB = async () => {
 app.get('/health',(req,res)=>{
     res.json({status:"OK",message:"Server is healthy"});
 })
+
+app.post("/pets",postPet);
+app.get("/pets",getPets)
+app.get("/pets/search",getPetsbysearch)
+app.get("/pets/:ID",getPetsbyID)
+app.put("/pets/:ID",putPetbyID)
+app.patch("/pets/:ID/age",patchPetbyID)
+app.delete("/pets/:ID",delPetbyID)
 const PORT = process.env.PORT || 8080;
 app.listen(PORT,()=>{
     console.log(` Server is running on port ${PORT}`);
