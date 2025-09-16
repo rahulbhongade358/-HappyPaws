@@ -98,13 +98,11 @@ const getPetsbysearch = async(req,res)=>{
         $or:[
             {name:{$regex:q,$options:"i"}},
             {breed:{$regex:q,$options:"i"}},
-            {color:{$regex:q,$options:"i"}},
             {gender:{$regex:q,$options:"i"}},
-            {description:{$regex:q,$options:"i"}},
         ]
     })
-    if(Pets.length===0){
-        return res.json({
+    if(Pets.length==0){
+        return res.status(404).json({
             success:false,
             data:[],
             message:"❌ No Pets found with the given search query"
