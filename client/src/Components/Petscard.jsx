@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import Available from "./../assets/allimgs/available.png";
 import { Trash2 } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 const Petscard = ({
   name,
@@ -20,7 +21,10 @@ const Petscard = ({
     const response = axios.delete(
       `${import.meta.env.VITE_API_URL}/pets/${_id}`
     );
-    loadPets();
+    if (response) {
+      toast.success("Pet deleted successfully");
+      loadPets();
+    }
   };
   return (
     <Link
@@ -43,7 +47,11 @@ const Petscard = ({
             <Trash2
               size={20}
               className="text-red-600 hover:text-red-800 bg-white rounded-md p-1 shadow"
-              onClick={deletePet}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                deletePet();
+              }}
             />
           </div>
           <img
@@ -66,6 +74,7 @@ const Petscard = ({
           <span className="font-bold">Description:</span> {description}
         </p>
       </div>
+      <Toaster position="top-right w-44 font-serif" />
     </Link>
   );
 };
