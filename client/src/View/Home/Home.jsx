@@ -56,7 +56,7 @@ const Home = () => {
         <img src={searchpet} alt="Search" className="inline-block m-1 h-9" />
       </div>
       <div>
-        {errors ? (
+        {errors && Pets.length === 0 ? (
           <img src={notfound404} alt="404 img" className="m-auto w-sm" />
         ) : null}
       </div>
@@ -86,6 +86,8 @@ const Home = () => {
               description={description}
               images={images}
               available={available}
+              _id={_id}
+              loadPets={loadPets}
             />
           );
         })}
