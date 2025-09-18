@@ -49,7 +49,6 @@ const Petscard = ({
               className="text-red-600 hover:text-red-800 bg-white rounded-md p-1 shadow"
               onClick={(e) => {
                 e.preventDefault();
-                e.stopPropagation();
                 deletePet();
               }}
             />
