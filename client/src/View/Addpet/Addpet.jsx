@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router";
 import addimg from "./../../assets/allimgs/add-image.png";
 function Addpet() {
   const [addPet, setAddPet] = useState({
@@ -21,6 +23,21 @@ function Addpet() {
         addPet
       );
       console.log("Pet added:", response.data);
+      toast.success("Pet added successfully!");
+      setAddPet({
+        name: "",
+        age: "",
+        gender: "",
+        breed: "",
+        weight: "",
+        color: "",
+        description: "",
+        images: [],
+        available: true,
+      });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } catch (error) {
       console.error("Error adding pet:", error.response?.data || error.message);
     }
@@ -155,6 +172,12 @@ function Addpet() {
           </div>
         </div>
       </div>
+      <Link to="/" className="flex justify-center mt-8">
+        <button className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+          View All Pets
+        </button>
+      </Link>
+      <Toaster position="top-center" />
     </div>
   );
 }
