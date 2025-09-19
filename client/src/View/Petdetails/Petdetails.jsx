@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router";
 import axios from "axios";
 function Petdetails() {
   const { id } = useParams();
@@ -77,13 +76,7 @@ function Petdetails() {
                 {petDetails.available ? "Available" : "Not Available"}
               </span>
             </p>
-            <div>
-              <Link to="/pet/add">
-                <button className="mt-6 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-                  Add Pet
-                </button>
-              </Link>
-            </div>
+            <div></div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router";
 import searchpet from "./../../assets/allimgs/magnifier.png";
 import Petscard from "../../Components/Petscard";
 import notfound404 from "./../../assets/allimgs/404page.png";
@@ -64,6 +65,13 @@ const Home = () => {
             alt="Search"
             className="inline-block ml-2 h-8 cursor-pointer hover:scale-110 transition"
           />
+        </div>
+        <div className="flex justify-center">
+          <Link to="/pet/add">
+            <button className="mt-6 w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+              Add Pet
+            </button>
+          </Link>
         </div>
         <div className="mt-6">
           {errors && Pets.length === 0 ? (
